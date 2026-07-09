@@ -1,4 +1,4 @@
-# Screamsheet Generator — Svelte Pages V4
+# Screamsheet Generator — Svelte Pages V5
 
 This package is GitHub Pages-ready. Upload the root folder contents to a GitHub repository and enable GitHub Pages. You do **not** need to run `npm install`, `npm run dev`, or `npm run build` to use the app.
 
@@ -14,32 +14,29 @@ README.md
 
 The `_svelte_source/` folder is included only for future development.
 
-## Main changes in V4
+## V5 fixes
 
-- Granular block movement is now available in **all** layouts, not only `Free layout`.
-- Layout presets now behave as starting guides/arrangements. They no longer prevent manual positioning.
-- Any selected block can be:
-  - dragged with the `☰` handle;
-  - resized with the lower-right resize handle;
-  - positioned by exact `X / Y / W / H` values;
-  - snapped to grid;
-  - locked/unlocked;
-  - moved forward/backward in z-order.
-- Collision checks apply to manual movement and resizing so blocks cannot be placed over each other.
-- `Free layout` now also participates in auto-flow.
-- Auto-flow now checks both page overflow and text overflow inside positioned blocks.
-- Added a selected-block auto-flow toggle so specific blocks can opt out.
-- Preserved the sidebar accordion UI, Markdown recognition, image controls, font-size controls, project JSON save/load, PDF export, and print fallback.
+- Fixed the one-page auto-flow bug where the app could keep duplicating a block even when no visible overlap existed.
+- Auto-flow now distinguishes between:
+  - **text overflow inside a block**, which may create continuation blocks;
+  - **physical page overflow**, which moves the whole block to the next safe page instead of splitting text unnecessarily.
+- One-page documents are valid. If auto-flow genuinely needs more space, the app creates the next page safely.
+- Svelte and Vanilla root builds now share the same static files and visible capabilities.
 
-## Layout behavior
+## Core capabilities
 
-All layouts support manual arrangement. `1 column`, `2 columns`, `3 columns`, sidebar, feature, map, and `Free layout` control the initial structure and page guides, but individual blocks can still be moved and resized.
-
-When auto-flow is enabled, long text continues into a continuation block. The app first tries to place the continuation into safe empty space on the same page; if there is no non-overlapping space, it creates or uses a following page.
-
-## Markdown support
-
-When `Auto-apply Markdown on paste/blur` is enabled, the editor recognizes headings, bold, italic, strike, inline code, links, bullets, numbered lists, and quote blocks. Markdown conversion is sanitized before insertion.
+- Sidebar accordion UI.
+- Night City Today-style Screamsheet templates.
+- Add, duplicate, delete, drag, resize, and reorder blocks.
+- Granular `X / Y / W / H` positioning in all layouts.
+- Collision prevention for positioned blocks.
+- Auto-flow in all layouts, including Free layout.
+- Per-block auto-flow toggle.
+- Font-size controls for title and body text.
+- Markdown recognition and safe conversion.
+- Image upload, asset library, image/map blocks, and image placement controls.
+- Project save/load as JSON.
+- Download PDF and print fallback.
 
 ## Editing the Svelte source
 
