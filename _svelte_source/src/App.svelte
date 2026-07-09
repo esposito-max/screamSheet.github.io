@@ -67,7 +67,7 @@
 <button id="apply-layout-btn" type="button">Apply Layout</button>
 <button id="add-section-btn" type="button">Add Section</button>
 </div>
-<label class="inline-check"><input checked="" id="auto-flow-toggle" type="checkbox"/> Auto overflow in newspaper layouts</label>
+<label class="inline-check"><input checked="" id="auto-flow-toggle" type="checkbox"/> Auto-flow text in all layouts</label>
 <button id="reflow-now-btn" type="button">Reflow Now</button>
 </details>
 <details class="tool-section" open="">
@@ -117,7 +117,7 @@
 <button id="font-smaller-btn" type="button">A−</button>
 <button id="font-larger-btn" type="button">A+</button>
 </div>
-<label>Free layout geometry</label>
+<label>Block geometry</label>
 <div class="compact-grid four-cols">
 <span>X</span><input id="block-x-input" min="0" step="1" type="number" value="44"/>
 <span>Y</span><input id="block-y-input" min="0" step="1" type="number" value="120"/>
@@ -131,6 +131,7 @@
 </div>
 <label class="inline-check"><input checked="" id="snap-grid-toggle" type="checkbox"/> Snap to grid</label>
 <label class="inline-check"><input id="lock-block-toggle" type="checkbox"/> Lock selected block</label>
+<label class="inline-check"><input checked="" id="block-auto-flow-toggle" type="checkbox"/> Selected block participates in auto-flow</label>
 </details>
 <details class="tool-section">
 <summary>Images</summary>
