@@ -1,35 +1,21 @@
-# Screamsheet Generator V8 — Svelte GitHub Pages-ready
+# Screamsheet Generator V10 — Svelte Pages-ready
 
-This package contains the V8 Screamsheet Generator.
+This package is GitHub Pages-ready.
 
-## V8 changes
+Upload the root files to GitHub Pages and open the Pages URL. No `npm install`, `npm run dev`, or `npm run build` is required to use the app.
 
-- Page templates now start empty. They provide a page/layout structure only; they do not auto-insert sample blocks.
-- The global **Reflow Now** command has been removed.
-- Added non-destructive **Show Overflow Warnings**.
-- Added selected-block scoped **Flow Selected Text Block**.
-- Manual movement, resizing, exact geometry controls, image support, Markdown conversion, project save/load, and PDF export remain available.
-- Export remains read-only: failed export attempts should not mutate the editor state.
+The root `index.html` is the built/static app. `_svelte_source/` is included for future development reference.
 
-## Layout behavior
+## Core rules
 
-Templates and layout presets are starting structures/guides. Add the blocks you need from the **Add Blocks** section, then move/resize them manually as needed.
+- A new/template page is truly blank: the body starts with zero blocks and zero DOM placeholder blocks.
+- Templates only change page chrome and guide overlays.
+- Every user-created block is an independent canvas object with X/Y/W/H geometry.
+- Moving/resizing affects only the selected block.
+- No global reflow exists.
+- Overflow checks are non-destructive.
+- PDF export renders from a read-only state copy and does not mutate the editor.
 
-Text continuation is deliberately scoped to the selected block. No command should restructure the entire document unless you deliberately reset or rebuild a page.
+## Tested
 
-## Testing
-
-See `V8_TEST_REPORT.txt` for the browser interaction checks run against both the Vanilla and Svelte root builds.
-
-## GitHub Pages use
-
-The root of this package is ready for GitHub Pages. Upload the root files and enable Pages. You do not need `npm install`, `npm run dev`, or `npm run build` to use the app.
-
-The `_svelte_source/` folder is included only for future development.
-
-
-## V9 blank-template correction
-
-- Templates now create truly blank pages: zero blocks and zero real placeholder/drop-zone sections.
-- Empty-page hints are CSS-only overlays. They do not occupy layout space, cannot be selected, cannot overlap, and are not exported as blocks.
-- Layout presets set the initial page guide only; all content is added manually through Add Blocks.
+See `V10_TEST_REPORT.json`.
