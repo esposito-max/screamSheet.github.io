@@ -1,8 +1,8 @@
-# Cyberpunk RED Screamsheet Generator — Svelte Static / GitHub Pages Version V2
+# Screamsheet Generator — Svelte Pages V3
 
-This package is ready to upload to GitHub Pages as a static site.
+This package is GitHub Pages-ready. Upload the root folder contents to a GitHub repository and enable GitHub Pages. You do **not** need to run `npm install`, `npm run dev`, or `npm run build` to use the app.
 
-The root folder contains the usable app:
+The root files are the ready-to-serve static build:
 
 ```text
 index.html
@@ -12,42 +12,50 @@ Cyberpunk RED Logos/
 README.md
 ```
 
-You do **not** need to run `npm install`, `npm run dev`, or `npm run build` to use the app from GitHub Pages.
+The `_svelte_source/` folder is included only for future development.
 
-The Svelte source is included separately in:
+## Main changes in V3
 
-```text
-_svelte_source/
+- Replaced the crowded top toolbar with a left sidebar.
+- Sidebar tools are grouped into accordion sections:
+  - Document
+  - Pages & Templates
+  - Page Layout
+  - Add Blocks
+  - Selected Block
+  - Images
+  - Markdown
+  - Export & Files
+- Added `Free layout` mode for granular block placement.
+- Free-layout blocks can be dragged and resized with no-overlap collision checks.
+- Added exact X/Y/W/H controls for selected free-layout blocks.
+- Added snap-to-grid, lock/unlock, and z-order controls.
+- Added automatic Markdown recognition on paste/blur.
+- Added manual `Apply Markdown to Selection` command.
+- Preserved PDF export, print fallback, project JSON save/load, image library, font-size controls, and newspaper overflow behavior.
+
+## Layout modes
+
+### Newspaper layouts
+
+Use `1 column`, `2 columns`, `3 columns`, sidebar, feature, and map layouts for article-heavy pages. These support automatic overflow into later columns/pages.
+
+### Free layout
+
+Use `Free layout` for front pages, ad pages, maps, covers, and hand-tuned compositions. Blocks can be positioned manually. Text overflow is not automatically reflowed in this mode; resize the block or create another block.
+
+## Markdown support
+
+When `Auto-apply Markdown on paste/blur` is enabled, the editor recognizes headings, bold, italic, strike, inline code, links, bullets, numbered lists, and quote blocks. Markdown conversion is sanitized before insertion.
+
+## Editing the Svelte source
+
+Only needed if you want to change the source implementation:
+
+```bash
+cd _svelte_source
+npm install
+npm run build
 ```
 
-Only use that folder if you later want to edit the Svelte implementation and rebuild it yourself.
-
-## Main features
-
-- Same Screamsheet templates and block types as the vanilla version.
-- Editable layouts: 1 column, 2 columns, 3 columns, sidebar left, sidebar right, feature split, and map + notes.
-- Drag-and-drop block movement, plus move up/down fallback controls.
-- Block span controls: normal, span 2 columns, full width, and compact/sidebar.
-- Image upload and asset library, including article images, hero images, maps/diagrams, captions, and image fit controls.
-- Font-size controls for selected blocks: body text and title text.
-- Adaptive headline fitting so lead titles stay inside their column.
-- Automatic overflow flow: long text is split into continuation blocks, moved into the next available column, and then into new pages when needed.
-- Direct PDF download.
-- Print fallback.
-- Save/load project JSON.
-- Browser autosave.
-
-## GitHub Pages usage
-
-1. Extract this zip.
-2. Upload the root files and folders to your GitHub repository.
-3. Enable GitHub Pages for that branch/folder.
-4. Open the GitHub Pages URL.
-
-Do not upload only `_svelte_source/`. That is source code, not the static deployment root.
-
-## Overflow behavior
-
-The editor automatically checks page height after edits. Splittable text blocks continue into another column where possible. If the current page cannot hold the continuation, the editor creates or uses the next page.
-
-Image-heavy blocks, ads, warning boxes, and other compact visual blocks are moved as whole blocks when they cannot fit. If a block is too large to fit on a page, the editor marks the page with an overflow warning so you can reduce font size, image height, or block count.
+For normal use through GitHub Pages, do not run those commands.
