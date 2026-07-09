@@ -1,17 +1,5 @@
-# Svelte Source — Screamsheet Generator V5
+# Svelte source
 
-This folder contains the editable Svelte/Vite source. The repository root already contains the compiled GitHub Pages-ready static app.
+This folder contains the Svelte/Vite source for the Screamsheet Generator V7 package. The repository root already contains the built GitHub Pages-ready static app.
 
-To edit and rebuild the source:
-
-```bash
-npm install
-npm run build
-```
-
-V5 includes the auto-flow duplication fix and keeps the root static build in parity with the vanilla package.
-
-
-## V6 export stability note
-
-The PDF export button is read-only: it no longer runs auto-flow or collision repair on the live editor document. If a browser blocks the direct raster renderer, the app falls back to a safe canvas/PDF renderer instead of mutating the working document. Print Fallback remains available for browser-native PDF printing.
+Use this source folder only if you want to continue development and rebuild the static output.

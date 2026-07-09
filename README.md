@@ -1,36 +1,27 @@
-# Screamsheet Generator — Svelte Pages V5
+# Screamsheet Generator — Svelte / GitHub Pages-ready V7
 
-This package is GitHub Pages-ready. Upload the root folder contents to a GitHub repository and enable GitHub Pages. You do **not** need to run `npm install`, `npm run dev`, or `npm run build` to use the app.
+This package is already built as a static GitHub Pages site. Upload the root files to a repository and enable GitHub Pages. No `npm install`, `npm run dev`, or `npm run build` is needed to use the app.
 
-The root files are the ready-to-serve static build:
+The Svelte source is included under `_svelte_source/` for future development, but the usable app is at the package root.
 
-```text
-index.html
-css/
-js/
-Cyberpunk RED Logos/
-README.md
-```
+## V7 interaction fixes
 
-The `_svelte_source/` folder is included only for future development.
-
-## V5 fixes
-
-- Fixed the one-page auto-flow bug where the app could keep duplicating a block even when no visible overlap existed.
-- Auto-flow now distinguishes between:
-  - **text overflow inside a block**, which may create continuation blocks;
-  - **physical page overflow**, which moves the whole block to the next safe page instead of splitting text unnecessarily.
-- One-page documents are valid. If auto-flow genuinely needs more space, the app creates the next page safely.
-- Svelte and Vanilla root builds now share the same static files and visible capabilities.
+- Reworked block interaction so the move handle, reorder handle, and resize handle are separate controls.
+- Fixed the mass-overlap failure caused by reading default/free-layout coordinates instead of the actual rendered block positions.
+- Moving or resizing now freezes the current visual layout from `getBoundingClientRect()` before applying manual geometry.
+- Nested grids are handled as layout items, so a block inside a multi-column/nested layout no longer collapses the surrounding layout when selected, resized, or moved.
+- Reordering no longer shares the same handle/path as manual movement.
+- Collision markers are cleared and recalculated per interaction instead of persisting as stale state.
+- Background autosave no longer triggers full auto-pagination after every layout interaction. Reflow still runs when explicitly requested through **Reflow Now**, and text-edit auto-flow remains available from content edits.
 
 ## Core capabilities
 
 - Sidebar accordion UI.
 - Night City Today-style Screamsheet templates.
-- Add, duplicate, delete, drag, resize, and reorder blocks.
+- Add, duplicate, delete, move, resize, and reorder blocks.
 - Granular `X / Y / W / H` positioning in all layouts.
 - Collision prevention for positioned blocks.
-- Auto-flow in all layouts, including Free layout.
+- Auto-flow support in all layouts, including Free layout.
 - Per-block auto-flow toggle.
 - Font-size controls for title and body text.
 - Markdown recognition and safe conversion.
@@ -38,19 +29,6 @@ The `_svelte_source/` folder is included only for future development.
 - Project save/load as JSON.
 - Download PDF and print fallback.
 
-## Editing the Svelte source
+## V6 export stability retained
 
-Only needed if you want to change the source implementation:
-
-```bash
-cd _svelte_source
-npm install
-npm run build
-```
-
-For normal use through GitHub Pages, do not run those commands.
-
-
-## V6 export stability note
-
-The PDF export button is read-only: it no longer runs auto-flow or collision repair on the live editor document. If a browser blocks the direct raster renderer, the app falls back to a safe canvas/PDF renderer instead of mutating the working document. Print Fallback remains available for browser-native PDF printing.
+The PDF export button is read-only: it does not run auto-flow or collision repair on the live editor document. If a browser blocks the direct raster renderer, the app falls back to a safe canvas/PDF renderer instead of mutating the working document. Print Fallback remains available.
