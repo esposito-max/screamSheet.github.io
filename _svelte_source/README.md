@@ -10,3 +10,8 @@ npm run build
 ```
 
 V5 includes the auto-flow duplication fix and keeps the root static build in parity with the vanilla package.
+
+
+## V6 export stability note
+
+The PDF export button is read-only: it no longer runs auto-flow or collision repair on the live editor document. If a browser blocks the direct raster renderer, the app falls back to a safe canvas/PDF renderer instead of mutating the working document. Print Fallback remains available for browser-native PDF printing.
