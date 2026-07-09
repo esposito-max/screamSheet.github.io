@@ -1,3 +1,3 @@
 import { defineConfig } from 'vite';
-import { svelte } from '@sveltejs/vite-plugin-svelte';
+import { svelte } from '@vitejs/plugin-svelte';
 export default defineConfig({ base: './', plugins: [svelte()] });

@@ -1,1 +1,12 @@
-{"scripts":{"dev":"vite --host 0.0.0.0","build":"vite build"},"dependencies":{"@sveltejs/vite-plugin-svelte":"latest","vite":"latest","svelte":"latest"},"devDependencies":{}}
+{
+  "scripts": {
+    "dev": "vite --host 0.0.0.0",
+    "build": "vite build"
+  },
+  "dependencies": {
+    "@vitejs/plugin-svelte": "latest",
+    "vite": "latest",
+    "svelte": "latest"
+  },
+  "devDependencies": {}
+}

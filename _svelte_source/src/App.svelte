@@ -1,8 +1,9 @@
 <script>
-  // Development source placeholder: the GitHub Pages-ready root app is intentionally static.
-  // For future Svelte development, port the root index.html logic into Svelte components here.
+  // The GitHub Pages-ready app is already built at the package root.
+  // Use the root index.html for campaign use. This source placeholder exists only
+  // so the package preserves the requested Svelte development structure.
 </script>
 <main>
-  <h1>Screamsheet Generator V10</h1>
-  <p>The deployable app is the built/static root index.html.</p>
+  <h1>Screamsheet Generator V11</h1>
+  <p>Use the static root build for GitHub Pages.</p>
 </main>
