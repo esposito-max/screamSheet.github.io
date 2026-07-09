@@ -26,3 +26,10 @@ See `V8_TEST_REPORT.txt` for the browser interaction checks run against both the
 The root of this package is ready for GitHub Pages. Upload the root files and enable Pages. You do not need `npm install`, `npm run dev`, or `npm run build` to use the app.
 
 The `_svelte_source/` folder is included only for future development.
+
+
+## V9 blank-template correction
+
+- Templates now create truly blank pages: zero blocks and zero real placeholder/drop-zone sections.
+- Empty-page hints are CSS-only overlays. They do not occupy layout space, cannot be selected, cannot overlap, and are not exported as blocks.
+- Layout presets set the initial page guide only; all content is added manually through Add Blocks.
